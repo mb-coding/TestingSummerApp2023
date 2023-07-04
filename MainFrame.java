@@ -1,4 +1,8 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
+
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
@@ -29,22 +33,48 @@ public class MainFrame extends JFrame {
         lbWelcome = new JLabel();
         lbWelcome.setFont(mainFont);
 
-        //JButton btnOK = new JButton("OK");
-        //btnOK.setFont(mainFont);
-        //btnOk.addActionListener(newActionListener() {
+        JButton btnOK = new JButton("OK");
+        btnOK.setFont(mainFont);
+        btnOK.addActionListener(new ActionListener() {
 
-        //}
-    //});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String firstName = tfFirstName.getText();
+                String lastName = tfLastName.getText();
+                lbWelcome.setText("Hello " + firstName + " " + lastName);
+            }
+
+        });
+
+        JButton btnClear = new JButton("Clear");
+        btnClear.setFont(mainFont);
+        btnClear.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tfFirstName.setText("");
+                tfLastName.setText("");
+                lbWelcome.setText("");
+            }
+
+        });
+
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new GridLayout(1, 2, 5, 5));
+        buttonsPanel.add(btnOK);
+        buttonsPanel.add(btnClear);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(new Color(128, 128, 255));
         mainPanel.add(formPanel, BorderLayout.NORTH);
         mainPanel.add(lbWelcome, BorderLayout.CENTER);
+        mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
 
+        add(mainPanel);
 
         setTitle("Welcome");
-        setSize(500,500);
+        setSize(500,600);
         setMinimumSize(new Dimension(300,400));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
