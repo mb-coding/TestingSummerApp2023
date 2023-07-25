@@ -5,7 +5,7 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.*;
 
-public class MainFrame extends JFrame {
+public class AlsoIgnore extends JFrame {
     final private Font mainFont = new Font("Segoe print", Font.BOLD, 18);
     JTextField tfFirstName, tfLastName;
     JLabel lbWelcome;
@@ -81,7 +81,7 @@ public class MainFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        MainFrame myFrame = new MainFrame();
+        AlsoIgnore myFrame = new AlsoIgnore();
         myFrame.initialize();
     }
 }
